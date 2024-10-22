@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOOTSTRAP</title>
+    <!--añado el link de bootstrap para enlazarlo con la libreria que elija, en este caso la .min.css, para asi poder acceder a todo su paquete que contiene 
+    elementos que, estando prehechos me van a permitir realizar infinidad de cosas nuevas.-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--aqui vamos a poner todos los estilos sin necesidad de tener que hacer un archivo css.-->
+    <style> 
+        #proporcion > div {
+            text-align: center;
+            border: 2px solid blue; 
+        }
+    </style>
+
+</head>
+
+<body>
+    <!--para comprobar que funciona la libreria, despues de poner hola, pondré un div escribiendo: div.container y pulsando enter, despues meto 
+    h2 en la etiqueta. Escribo div.container porque son las nuevas etiquetas que nos permite usar bootstrap despues de haberlo introducido mediante
+    el link en el head.Compruebo que funciona en el buscador. Esta etiqueta como podemos comrprobar nos mete nuestro h2 en un contenedor y nos lo 
+    coloca ajustado al espacio de la pagina. El h2 solo nos saldria a la izda arriba pegado sin margenes.
+            <div class="container">
+                <h2>Hola</h2>
+            </div>--> 
+
+    <!--lo siguiente que vamos a hacer es mediante .row, hacer filas y con .col hacer columnas dentro de div. A su vez vamos a colocar h2 dentro de cada columnas 
+    para que tenga algo de contenido. Para poder hacer columnas, primero tengo que tener row donde meterlas. Duplico y observo que tengo dos filas con 3 columnas.
+    El row se divide en todas las col que yo quiera, pero si yo cojo esos col y añado uno mas dentro del div o la quito, se me ajusta automaticamente.
+    Col, como unico lo que hace es que todos los col que yo ponga, me dividen el espacio igual para todos los col, es decir, se ajusta automaticamente.
+
+    Al poner id= "proporcion" en el id  vamos a darle estilos.
+    -->
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-4 col-md-6 text-primary"> <!--aqui vamos a bootstrap y en el buscador ponemos color para buscar los colores de texto. Buscamos text primary
+                                                y lo colocamos aqui, actualizamos la pagina y vemos como aparece ahora en color azul. con col-lg- lo que estamos
+                                                diciendo es que cuando la pantalla grande, la proporcion / resolucion de este col sea de 4 (en este caso al haber
+                                                3 columnas lo tenemos que poner en cada una de ellas igual). cuando la resolucion se reduzca, tenemos que 
+                                                ajustarlo tambien por lo que usaremos en este caso col-md-6 para que cuando esta columna alcance la resolucion de md, 
+                                                tenga una resolucion de 6, es decir, que haya dos por fila, asi en todas (esto quiere decir que cuando nuestra 
+                                                pantalla se reduzca, se ajuste a la pantalla)-->
+                <h2>Hola</h2>
+            </div>
+
+            <div class="col-lg-4 col-md-6 bg-primary"> <!-- aqui vamos al bootstrap y en el buscador buscamos en utilities - background, seleccionamos el que queramos y lo
+                                                        pegamos aqui.-->
+                <h2>que </h2>
+            </div>
+
+            <div class="col-lg-4 col-md-6 text-center"> <!-- text-center es para centrar el texto en la casilla-->
+                <h2>tal</h2>
+            </div>
+        </div>
+
+
+        <div id="proporcion" class="row">
+            <div class="col-md-4 col-sm-12"> <!--  La proporcion que tienen los col es 12, quiere decir que ajusto los espacios en ese margen añadiendo al lado de 
+                                    col - y el numero que sea hasta 12, lo que nos quedara segun la proporcion que le demos.-->
+                <h2>Hola</h2>
+            </div>
+
+            <div class="col-md-4 col-sm-6"> <!--aqui vemos la diferencia de resolucion con la de col-sm-12-->
+                <h2>que </h2>
+            </div>
+
+            <div class="col-md-4 col-sm-12">
+                <h2>tal</h2>
+            </div>
+
+        </div>
+        
+        <div class="div">
+            <div class="col-3">
+
+            </div>
+
+            <div class="col-6"> <!-- en esta parte vamos a bootstrap y buscamos forms y vamos hasta overview, buscamos el formulario que nos 
+                                    interesa y copiamos el codigo, despues vamos a ir cambiando colores y centrando el contenido del codigo original:
+                                      <form>
+                                            <div class="mb-3">
+                                            <label for="exampleInputEmail1" class="form-label">Email address</label>
+                                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                                            </div>
+                                            <div class="mb-3">
+                                            <label for="exampleInputPassword1" class="form-label">Password</label>
+                                            <input type="password" class="form-control" id="exampleInputPassword1">
+                                            </div>
+                                            <div class="mb-3 form-check">
+                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </form>-->
+
+                <br> <!--dar espacio al formulario respecto las ultimas filas de las columnas-->
+                <form method="post" action="subida.php" enctype="multipart/form-data"> 
+                    <!--method lo ponemos para el metodo de envio, hay dos, usaremos el 
+                    post que es wnviar los datos para que se envien ocultos, si usamos get se envian por la url. action es el fichero que voy a utilizar 
+                    para hacer lo que quiero hacer, en este caso, subid.php. y, entype es el tipo de encriptacion, que usaremos la que viene ahi 
+                    multipart/form-data (para que este formulario funcione sin ningun problema, tendriamos que hacer una carpeta o archivo con ese nombre
+                    que seria donde se guardaria en el servidor los archivos que se descarguen de rellenar aqui en el formulario dicho apartado, lo hacemos.
+                    La gracia completa seria que cuando en la web del navegador le demos a enciar, en la pagina que nos redirija el php diga algo tipo "se ha 
+                    enviado todo correctament" y una opcion de volver al inicio de la pagina o parecido)-->
+                    
+                    <div class="mb-3">
+                      <label class="form-label">Nombre</label>
+                      <input type="text" class="form-control">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Apellidos</label>
+                        <input type="text" class="form-control">
+                      </div>
+                    
+                      <div class="mb-3"> <!--aqui vamos a irnos al navegador y buscamos regex, el cual es un simulador de regular expression automatico.
+                                            vamos a ir validando que nos coja nuestro requerimiento (ver apuntes de este dia en papel)-->
+                        <label class="form-label">DNI</label>
+                        <input type="text" class="form-control" pattern="[0-9] {8} [A-Z] {1}">
+                      </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control">
+                     </div>
+
+                     <div class="mb-3">
+                        <label class="form-label">Archivo</label>
+                        <input type="file" class="form-control">
+                      </div>
+
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                    <button type="reset" class="btn btn-success">Borrar</button>
+                  </form>
+            </div>
+
+            <div class="col-3">
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
