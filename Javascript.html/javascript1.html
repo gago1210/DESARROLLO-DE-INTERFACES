@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<br lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript I</title>
+
+
+</head>
+
+
+<!--JS es un manipulador del DOM (estructuras de la pagina web), esto significa que todas las etiquetas que componen HTML, JS puede manipular 
+todas las etiquetas y elementos del DOM. A su vez, el navegador tiene elementos a los que pued eacceder JS y puede manipularlos tambien que 
+son las llamadas BOM (estructuras de los navegadores)-->
+
+<!--JS, dependiendo de donde lo coloques funciona de una manera o de otra. Si lo ponemos al principio, antes de los elementos de HTML, no va 
+a funcionar porque no va encontrar el elemento al que se refiere. Tenemos que colocarlo despues de los elementos de html para que se pueda
+encontrar, todo esto en el body estamos hablando. El orden perfecto seria css en el head, y en el body , primero los elementos de html y despues
+de JS-->
+
+<!--JS es un lenguaje de programacion distinta del resto de lenguaje que permite un dinamismo y una forma de programacion diferente a 
+la mayoria de los lenguajes, es muy rapido y muy facil de codificar aunque un programa largo de JS si no lo haces ordenado, puede ser caotico 
+y raro a la hora de visualizarlo e interpretarlo-->
+
+<!--a continuacion vamos a ver la declaracion de las variables, hay tres tipos (var, let, const). La declaracion de variable que no se debe
+de utilizar es VAR porque es peligrosa, es una declaracion generica de una variable a pesar de que sea funcional, NO SE UTILIZA, supera el
+ambito de la declaracion del elemento, se debe utilizar LET-->
+
+<!--Puedo enlazar un elemento mediante un identificador (get element by id(name/tag....)enlazadores del DOM),-->
+
+<!--para modificar el elemento con JS, -->
+
+<br onload="console.log('La pagina se ha cargado');">
+    <p id="parrafo" onclick="sacartexto()">TEXTO INICIAL</p> <!--aqui se llama a la funcion sacartexto, establecida en JS-->
+    <br><br>
+
+    <h3>SUMA DE NUMERO</h3>
+    <input type = "number" id="num1">
+    <input type = "number" id="num2">
+    <button onclick="sumar()">SUMAR</button> <!--esto va con el apartado de la funcion sumar en la parte del script-->
+
+    <p id="resultado"></p>
+
+    <br><br>
+
+    <h3>VERIFICAR EDAD</h3>
+    <input type="number" id="edad">
+    <button onclick="verificar()">VERIFICACIÓN</button>
+    <p id="salida"></p>
+
+    <script>
+        //los comentarios se escriben asi en JS.
+        /*
+        los comentarios multilinea se escriben asi
+        */
+
+        var texto = "Hola"; //en desuso
+        let numero = 100; //para definir variables 
+        const iva = 0.21; //para constantes que van a permanecer estables en la ejecucion del programa
+
+        let array = [];
+        let bool = True;
+        
+
+        //coge el valor de la variable let y se realiza la operacion:
+        console.log(numero + "puntos");
+
+        function sumar(){
+            let a = parseInt(document.getElementById("num1").value);
+            let b = parseInt(document.getElementById("num2").value);
+
+            //console.log( a + b); //me sale por la consola porque estamos trabajando con console.log
+            let suma = a + b;
+            document.getElementById("resultado").innerHTML = "el resultado es: " + suma; //inner sirve para sacar el resultado al darle onclick
+            //nos saldrá concatenado por lo que tenemos que parsearlo en el apartado donde hayamos declarado la variable de cada numero (num1, num 2)
+        };
+
+        //el document es el elemento mas grande del DOM. esto es una funcion(function)
+        function sacartexto(){
+            document.getElementById ("parrafo").innerHTML =" Esto lo pone JavaScript";
+        };
+
+        //aqui vamos a desarrollar el codigo de mayor o menor edad:
+        function verificar(){
+            let edades = parseInt(document.getElementById("edad")).value;
+            if(edades >= 18){
+                document.getElementById("salida").innerHTML = "eres mayor de edad";//esto es para que te salga en la pantalla y no en consola al pulsarle en el input
+                document.getElementById("salida").style.color = "green"; //esto es para poner color
+            } else {
+                document.getElementById("salida").innerHTML = "eres menor de edad";
+            };
+        };
+            
+    </script>
+    
+</body>
+</html>
