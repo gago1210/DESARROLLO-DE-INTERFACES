@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CANVAS I</title>
+</head>
+
+<body>
+    <canvas id="juego" width="500" height="400" style="border: 1px solid red"></canvas>
+
+
+    <script>
+        //esto es el cuadro que hemos generado, el contexto de canvas
+        let canvas = document.getElementById("juego"); //porque necesitamos hacer un contexto para hacer lo que sea (movimiento,dinamismo, etc)
+        let ctx = canvas.getContext("2d");
+
+        //coordenadas del circulo
+        let a = 30;
+        let b = 30;
+
+        //vamos a dar las coordenadas de posicion, movimiento, etc:
+        let x = 25; //le damos la coordenada x para definir el tilemap
+        let y = 25;
+        let mx = 4; //movimiento en eje x 
+        let my = 4; //movimiento en eje y
+
+        //damos funcionalidad. 
+        // los juegos se basan en pintar y borrar.
+        function rebotecuadro(){
+
+            //borrar canvas
+            ctx.clearRect(0,0,canvas.width, canvas.height); //clear rect es limpiar el rectangulo en los parametros metidos 
+
+            //vamos a dibujar el cuadro que vamos a utilizar
+            ctx.fillStyle = "blue"; //filestyle es para decirle cual es el relleno que va a colorear en el cuadro
+            ctx.fillRect (x,y,25,25); //esto le indica donde va a dibujar y va a rellenar (en esas coordenadas) lo que le he indicado
+    
+            //vamos a dibujar un circulo:
+            ctx.beginPath(); //porque el circulo lo tengo que ir dibujando, poniendole radio, etc
+            ctx.arc(a,b,25,0,2*Math.PI);
+            ctx.fillStyle = "red";
+            ctx.fill();
+
+
+
+            //vamos a mover el cuadro solo:
+            x += mx; //donde empiezo, sumale 2al movimiento mx
+            y += my; //donde empiezo, sumale 2 al movimiento my
+
+            //le ponemos colision para que pare y no se nos vaya y desaparezca, CREAR REBOTES:
+            if (x + 25 > canvas.width || x < 0){
+                mx = - mx //cambia de direccion
+            };
+            
+            if(y + 25 > canvas.height || y < 0) {
+                my = - my; //cambia de direccion
+            };
+
+
+
+            requestAnimationFrame(rebotecuadro);//esto lo que hace es el bucle cada vez que se repite la funcion
+        }
+
+        //llamamos a la funcion:
+        rebotecuadro();
+
+    </script>
+
+</body>
+</html>
