@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FUNKOS HARRY POTTER</title>
+    <!--aqui copio el enlace css bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <!--aqui copio el enlace javascript bootstrap para poder usarlo en toda la pagina-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+   
+    <link rel="shortcut icon" href="imagenes/favicon.png" type="">"
+    <style>
+      body{
+            background: rgb(199, 146, 249);
+        }
+      #productos{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .parent{
+        text-align: center;
+        margin:0% auto;
+      }
+    </style>
+</head>
+
+<body>
+<div class="parent">
+  <div class="container">
+    <!--Aqui pongo la alerta para saber donde estoy-->
+    <div class="alert alert-warning text-center fs-2 opacity-30" role="alert">
+        <strong>TIENDA FUNKOS HARRY POTTER</strong> 
+    </div>
+  </div>
+
+<!--aqui establezco los productos de compra -->
+  <div class="row"  id="productos">
+    <div class="col-lg-9">
+      <div class="row gy-4">
+  <!--aqui establezco los productos de compra uno por uno dentro de su contenedor ya espaciado  -->
+
+  <!--funko harry potter -->
+        <div class="card col-lg-3 col-md-5"> 
+          <img src="imagenes/harry.jpg" class="card-img-top" alt="">
+            <div class="card-body">
+              <ul class="list-group list-group-flush">
+                <h3 class="list-group-item">HARRY POTTER </h3>
+                <h6 class="list-group-item">PRECIO: 15 €</h6>
+                <label class="d-inline">Cantidad: 
+                  <input class="d-inline form-control w-25 cant"  min="0" type="number" id="funkoHarry">
+                </label>            
+              </ul>
+              <br>
+              <button type="button" class="btn btn-primary" id="botonHarry" onclick="añadirCarrito('funko_Harry',15)">
+                <strong>AÑADIR AL CARRITO</strong>
+              </button>
+            </div>
+        </div>
+
+  <!--funko hermione -->
+      <div class="card col-lg-3 col-md-5"> 
+        <img src="imagenes/hermione.jpg" class="card-img-top" alt="">
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              <h3 class="list-group-item">HERMIONE GRANGER </h3>
+              <h6 class="list-group-item">PRECIO: 15 €</h6>
+              <label class="d-inline">Cantidad: 
+                <input class="d-inline form-control w-25 cant" min="0" type="number" id="funkoHermione">
+              </label>       
+            </ul>
+            <br>
+            <button type="button" class="btn btn-primary" onclick="añadirCarrito('funko_Hermione',15)">
+              <strong>AÑADIR AL CARRITO</strong>
+            </button>
+          </div>
+        </div>
+
+  <!--funko ron -->
+      <div class="card col-lg-3 col-md-5"> 
+        <img src="imagenes/ron.jpg" class="card-img-top" alt="">
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              <h3 class="list-group-item">RON WEASLEY </h3>
+              <h6 class="list-group-item">PRECIO: 15 €</h6>
+              <label class="d-inline">Cantidad: 
+                <input class="d-inline form-control w-25 cant" min="0" type="number" id="funkoRon">
+              </label>       
+            </ul>
+            <br>
+            <button type="button" class="btn btn-primary" onclick="añadirCarrito('funko_Ron',15)">
+              <strong>AÑADIR AL CARRITO</strong>
+            </button>
+          </div>
+        </div>
+
+
+<!--comienzo de carrito de la compra -->
+<!--AQUI AÑADIMOS LA OPCION QUE VA A LUEGO CON JS DAR FUNCIONALIDAD A LA PAGINA -->
+        <div class="col-lg-3 col-md-5">
+          <div class="card border-0 bg-transparent"  style="grid-row: span 2; display: flex; flex-direction: column; justify-content: space-between;">
+              <!--ALERTA PROPIA DE CARRITO TITULO-->
+              <div class=" alert alert-success text-center fs-6" role="alert">
+                  <strong>CARRITO DE LA COMPRA</strong> 
+              </div>
+              <div id="carrito">
+                <strong>ARTÍCULOS SELECCIONADOS</strong> 
+                <p id="lista"></p>
+                  
+              </div>
+      <!--ALERTA PROPIA DE CARRITO TOTAL-->
+              <div class="alert alert-primary text-center fs-6" role="alert">
+                  <p class="d-inline" id="totalCarrito">TOTAL CARRITO:</p> 
+                  <p class="d-inline"></p>
+                  <p class="d-inline"> € </p>
+              </div>
+              <div>
+                  <button type="button" class="btn btn-primary w-100 mt-1" onclick="comprarAhora()" >
+                    <strong>COMPRAR AHORA</strong>
+                  </button>
+                  <button type="button"  class="btn btn-warning w-100 mt-2" onclick="eliminarProducto()">
+                    <strong>ELIMINAR PRODUCTO</strong>
+                  </button>
+              </div> 
+          </div>
+      </div>
+<!--FIN CARRITO DE LA COMPRA-->
+
+
+      </div>
+    </div>
+  </div>
+  <!--aqui establezco los productos de compra -->
+  <div class="row" id="productos">
+    <div class="col-lg-9">
+      <div class="row gy-4">
+  <!--aqui establezco los productos de compra uno por uno dentro de su contenedor ya espaciado  -->
+
+  <!--funko ginny weasley -->
+        <div class="card col-lg-3 col-md-5 "> 
+          <img src="imagenes/ginny.jpg" class="card-img-top" alt="">
+            <div class="card-body">
+              <ul class="list-group list-group-flush">
+                <h3 class="list-group-item">GINNY WEASLEY </h3>
+                <h6 class="list-group-item">PRECIO: 15 €</h6>
+                <label class="d-inline">Cantidad: 
+                  <input class="d-inline form-control w-25 cant" min="0"  type="number" id="funkoGinny">
+                </label>            
+              </ul>
+              <br>
+              <button type="button" class="btn btn-primary" onclick="añadirCarrito('funko_Ginny',15)">
+                <strong>AÑADIR AL CARRITO</strong>
+              </button>
+            </div>
+        </div>
+
+  <!--funko dumbledore -->
+      <div class="card col-lg-3 col-md-5"> 
+        <img src="imagenes/dumbledore.jpg" class="card-img-top" alt="">
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              <h3 class="list-group-item">PROFESOR DUMBLEDORE Y FAWKES </h3>
+              <h6 class="list-group-item">PRECIO: 23 €</h6>
+              <label class="d-inline">Cantidad: 
+                <input class="d-inline form-control w-25 cant" min="0" type="number" id="funkoDumbledore">
+              </label>       
+            </ul>
+            <br>
+            <button type="button" class="btn btn-primary" onclick="añadirCarrito('funko_Dumbledore',23)">
+              <strong>AÑADIR AL CARRITO</strong>
+            </button>
+          </div>
+        </div>
+
+  <!--funko hedwig -->
+      <div class="card col-lg-3 col-md-5"> 
+        <img src="imagenes/hedwig.jpg" class="card-img-top" alt="">
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              <h3 class="list-group-item">HEDWIG </h3>
+              <h6 class="list-group-item">PRECIO: 20 €</h6>
+              <label class="d-inline">Cantidad: 
+                <input class="d-inline form-control w-25 cant" min="0" type="number" id="funkoHedwig">
+              </label>       
+            </ul>
+            <br>
+            <button type="button" class="btn btn-primary" onclick="añadirCarrito('funko_Hedwig',20)">
+              <strong>AÑADIR AL CARRITO</strong>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--empiezo a dar funcionalidad a traves de JavaScript-->
+<script>
+  let compraArray = []; //declaro la lista donde va almacenarse los datos de mis productos cuando los utilice
+  let preciosArray = [];
+  let unidadesArray = [];
+
+  
+  let totalCuenta=0;
+
+  function añadirCarrito(funkoId,precio){
+      //let funkoHarry = document.getElementById ("funkoHarry").value;
+      
+        if (funkoId=="funko_Harry"){
+          preciosArray.push(15) //push me añade al final el siguiente que añado, lista descendiente por orden de añadidura
+          unidadesArray.push(document.getElementById("funkoHarry").value);
+          compraArray.push(`Harry Potter ${precio} x ${document.getElementById("funkoHarry").value}=${precio*document.getElementById("funkoHarry").value}`);
+          totalCuenta += precio*document.getElementById("funkoHarry").value;
+          
+        } else if (funkoId=="funko_Hermione"){
+          preciosArray.push(15)
+          unidadesArray.push(document.getElementById("funkoHermione").value);
+          compraArray.push(`Hermione Granger ${precio} x ${document.getElementById("funkoHermione").value}=${precio*document.getElementById("funkoHermione").value}`);
+          totalCuenta += precio*document.getElementById("funkoHermione").value;
+        
+        }else if (funkoId=="funko_Ron"){
+          preciosArray.push(15)
+          unidadesArray.push(document.getElementById("funkoRon").value);
+          compraArray.push(`Ron Weasley ${precio} x ${document.getElementById("funkoRon").value}=${precio*document.getElementById("funkoRon").value}`);
+          totalCuenta += precio*document.getElementById("funkoRon").value;
+        
+        }else if (funkoId=="funko_Ginny"){
+          preciosArray.push(15)
+          unidadesArray.push(document.getElementById("funkoGinny").value);
+          compraArray.push(`Ginny Weasley ${precio} x ${document.getElementById("funkoGinny").value}=${precio*document.getElementById("funkoGinny").value}`);
+          totalCuenta += precio*document.getElementById("funkoGinny").value;
+
+        }else if (funkoId=="funko_Dumbledore"){
+          preciosArray.push(23)
+          unidadesArray.push(document.getElementById("funkoDumbledore").value);
+          compraArray.push(`Profesor Dumbledore y Fawkes ${precio} x ${document.getElementById("funkoDumbledore").value}=${precio*document.getElementById("funkoDumbledore").value}`);
+          totalCuenta += precio*document.getElementById("funkoDumbledore").value;
+
+        }else if (funkoId=="funko_Hedwig"){
+          preciosArray.push(20)
+          unidadesArray.push(document.getElementById("funkoHedwig").value);
+          compraArray.push(`Hedwig ${precio} x ${document.getElementById("funkoHedwig").value}=${precio*document.getElementById("funkoHedwig").value}`);
+          totalCuenta += precio*document.getElementById("funkoHedwig").value;
+        }
+//aqui se va sumando los productos que voy añadiendo y mostrandolos en lista
+        document.getElementById("totalCarrito").innerHTML =`TOTAL CARRITO: ${totalCuenta}`
+        document.getElementById("lista").innerHTML = compraArray.join('<br>');
+  }
+  
+
+  function comprarAhora(){
+    let longitudArray = unidadesArray.length;
+    let acumulado = 0;
+    for(i=0; i< longitudArray; i++){
+      acumulado += parseInt(unidadesArray[i]);
+    }
+  alert("HA COMPRADO: " + acumulado + " PRODUCTOS, CON UN IMPORTE TOTAL DE: " + totalCuenta + "€");
+  }
+
+  function eliminarProducto(){
+    let descuento = unidadesArray.pop() * preciosArray.pop()
+    compraArray.pop()
+    document.getElementById("totalCarrito").innerHTML =`TOTAL CARRITO: ${totalCuenta - descuento}`
+    document.getElementById("lista").innerHTML = compraArray.join('<br>');
+    //hasta aqui es eliminar el ultimo elemento de la lista, refrescando la lista de la compra 
+  }
+  
+</script>
+</body>
+</html>
