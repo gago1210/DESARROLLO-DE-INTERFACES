@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS</title>
+</head>
+
+<br onload="console.log('la pagina se ha cargado')"> <!--esto aparece en la consola-->
+ 
+    <!--comentario-->
+    <p id="parrafo" onclick="sacartexto()"> texto inicial</p>
+    <br><br>
+
+    <h3>SUMA DE NUMERO</h3>
+    <input type = "number" id="num1">
+    <input type = "number" id="num2">
+    <button onclick="">sumar</button> <!--esto va con el apartado de la funcion sumar en la parte del script-->
+
+    <p id="resultado"></p>
+    <br><br>
+
+   <!--funcion mayor o menos de 18 años: --> 
+   <h3>verificar edad </h3>
+   <input type="number" id="edad">
+   <button onclick="verificar()">verificacion</button>
+    <p id="salida"></p>
+
+    <script>
+        //comentario
+        /*
+             multilinea
+        */
+
+        var texto ="Hola";
+        let numero = 100;
+        const iva = 0.21;
+
+        console.log(texto); //me sale hola en la consola porque ha pasado por el script despues de la parte de html
+        console.log(numero + "puntos");
+
+        function sumar(){
+            let a = parseInt(document.getElementById("num1").value);
+            let b = parseInt(document.getElementById("num2").value);
+
+            //console.log( a + b); //me sale por la consola porque estamos trabajando con console.log
+
+            let suma = a + b;
+            document.getElementById("resultado").innerHTML = "el resultado es: " + suma; //inner sirve para sacar el resultado al darle onclick
+            //nos saldrá concatenado por lo que tenemos que parsearlo en el apartado donde hayamos declarado la variable de cada numero (num1, num 2)
+        }
+
+        function sacartexto(){
+            document.getElementById("parrafo").innerHTML = "esto lo pone JS"; //ESTO ES PARA MODIFICAR EL TEXTO CON JS//
+        };
+
+
+    //aqui vamos a desarrollar el codigo de mayor o menor edad:
+        function verificar(){
+            let edades = parseInt(document.getElementById("edad")).value;
+            if(edades >= 18){
+                document.getElementById("salida").innerHTML = "eres mayor de edad";//esto es para que te salga en la pantalla y no en consola al pulsarle en el input
+                document.getElementById("salida").style.color = "green"; //esto es para poner color
+            } else {
+                document.getElementById("salida").innerHTML = "eres menor de edad";
+            }
+
+        }
+
+
+    </script>
+
+</body>
+</html>
