@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF=8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>FIXED</title>
+        <style> 
+            body {
+                margin:0%;
+                padding:0%;
+                cursor: pointer;
+                
+            }
+
+            .menu {
+                top:10%;
+                position: fixed; /*para que se quede el contenido fijo*/
+                width:100%;
+                background-color: black;
+               
+            }
+
+            .menu a { /*esto son los enlaces, dar estilo a los enlaces*/
+                display: block; /*para que el menu quede en bloque*/
+                text-decoration: none;  /*nada de decoracion*/
+                color: beige; /*color de la letra*/
+                padding:13px 15px; /*hueco que queda*/
+                float:left; /*para que quede en horizontal y centrado, no en modo lista vertical*/
+                font-size: 17px; /*tamaño de la letra*/
+                font-weight: bold;
+                font-family: Arial, Helvetica, sans-serif;
+                transition:2s;
+            }
+
+/*aqui vamos a hacer que cuando pase por menu el conector, ocurran las cosas que a continuacion vamos a establecer*/
+            .menu a:hover {
+                background:grey;
+                color: black;
+            }
+
+            .contenido {
+                padding: 20px;
+                margin-top: 25px;
+                z-index: 1; /*z index es para poner capas*/
+                display: grid; /*los elementos que tengo salen en rejilla y se adaptan*/
+                grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
+                grid-gap:1em; /*separacion entre elementos*/
+            }
+            .contenido > div { /*web responsive*/
+                background: black;
+                padding:1em;
+                border-radius: 5px;
+                color: azure;
+            }
+
+/*es el cuadro de publicidad*/
+            #cuadro{ 
+                position: fixed;
+                z-index: 2; /*esto sirve para poner capas*/
+                top:30%;
+                left: 60%;
+                background-color: rgb(17, 17, 19);
+                width: 30%;
+                height: 20vh; /*vh es visual height que sirve para que visualmente la pagina se vea el 5 por ciento de alto visual*/
+                color: bisque;
+                font-weight: bold;
+                font-size: 30px;
+                align-content: center;
+                text-align: center;
+                border-radius:20px;
+            }
+
+/*¡¡¡¡¡¡ESTO ES LO IMPORTANTE A GUARDAR PARA LAS ANIMACIONES DE LAS APPS!!!!!!*/
+            body::-webkit-scrollbar{
+                display: none;
+            }
+
+        </style>
+
+    </head>
+    
+    <body>
+        <div class="menu">
+            <a href="#">INICIO</a>
+            <a href="#">OFERTAS</a>
+            <a href="#">RUTAS</a>
+            <a href="#">BLOG</a>
+        </div>
+
+        <div id="cuadro"> <!--AQUI VAMOS A UTILIZAR JAVASCRIPT PARA DAR FUNCIONALIDAD CUANDO SE PINCHE EN EL CUADRO DE PUBLICIDAD-->
+            <p onclick="alert('ESTO ES JAVASCRIPT')" onmouseover="this.innerHTML='ROAD'" onmouseout="this.innerHTML='HIT'">PUBLICIDAD</p> <!--inner join lo que hace es unir-->
+        </div>
+
+
+        <div class="contenido">
+            <div> 
+                <p>Andar rodeados de naturaleza es uno de los planes más buscados cada fin de semana por los madrileños, aquí encontrarás opciones para todos los
+                     niveles de senderismo.</p>
+            </div>
+            
+            <div>
+                <p>Hacer rutas de senderismo en Madrid está más solicitado que nunca porque todos necesitamos un baño de bosques para salir de la rutina y 
+                    escapar de la ciudad.
+                </p>
+            </div>
+
+            <div>
+                <p>Es una de las ideas más extendidas, pasar tiempo al aire libre, andando, con el viento en la cara y sin un edificio en el horizonte tiene 
+                    beneficios demostrados para la salud.
+                </p>
+            </div>
+           
+            <div>
+                <p>Es hora de atarse bien las botas de montaña, ponerse el pantalón técnico y empezar andar.
+
+                </p>
+            </div>
+
+            <div> 
+                <p>De norte a sur, de este a oeste, en zonas de montaña, en vías verdes... la Comunidad de Madrid dispone de una red de sendas que 
+                    recorre sus rincones rurales, los espacios naturales protegidos, las cañadas y vías pecuarias y muchos más caminos.
+                </p>
+            </div>
+            
+            <div>
+                <p>El camino hasta la Cascada del Hervidero, en San Agustín de Guadalix, es una ruta senderista fácil para ir con niños, que además cuenta con todos 
+                    los atractivos necesarios para transformar nuestro paseo en un cuento.
+                </p>
+            </div>
+
+            <div>
+                <p>La senda que discurre desde el Valle de la Barranca hasta la fuente de la Campanilla reúne todos los alicientes que busquéis y 
+                    su vistas son preciosas. Nada que envidiar a los Alpes..
+                </p>
+            </div>
+           
+            <div>
+                <p>La laguna de las Madres es una de las numerosas lagunas visitables del sureste de Madrid, pequeña pero muy agradable. 
+                    Para dar un paseo de mañana o tarde, cerca de la capital, con algunos alicientes.
+                </p>
+            </div>
+
+            <div>
+                <p>El Puerto de Cotos es uno de los lugares más emblemáticos para todos los amantes del senderismo. Se trata de un puerto de montaña que 
+                    permite cruzar hacia Segovia y se encuentra entre Peñalara y el ramal de Cuerda Larga, a mil ochocientos treinta metros de altitud
+                    y situado en el kilómetro 41,5
+                </p>
+            </div>
+
+            <div>
+                <p>Ruta de senderismo cargada de cultura y belleza paisajística en la que nos dirigimos al Monasterio de Bonaval, monasterio 
+                    cisterciense que data del siglo XII situado en un paraje natural excepcional rodeado por las aguas del río Jarama y por 
+                    majestuosos robles, encinas, chopos, sauces y monumentales quejigos.
+                </p>
+            </div>
+
+           <div>
+                <p>
+                    Muchos de nosotros conocemos las ventajas de caminar por la montaña, olvidar nuestras preocupaciones, ayudando a despejar 
+                    nuestra mente, lo que nos hace sentirnos bien: deporte, vistas, aire puro y vuelta a lo que somos, naturaleza.
+                </p>
+           </div> 
+            
+           <div>
+                <p>
+                    Una ruta de senderismo en la que disfrutamos de los saltos de agua y las cascadas que forman las caprichosas aguas del 
+                    Arroyo de la Angostura. Rodeados por el Pinar de los Belgas, uno de los más añejos, robles y abedules descubrimos los secretos de este valle.
+                </p>
+           </div>
+
+           <div>
+            <p>
+                Ruta apta para todos en la que nos dirigimos a la histórica Presa de El Gasco desde Torrelodones y en la que disfrutaremos de las ruinas del 
+                inacabado Canal de Guadarrama, el utópico proyecto que pretendía dar salida marítima a Madrid Desde Torrelodones, comenzamos esta ruta de 
+                senderismo con un tiempo típicamente primaveral.
+            </p>
+           </div>
+
+           <div>
+            <p>
+                En esta ocasión nos trasladamos a Finlandia sin salir de Madrid, hicimos senderismo hacia el frondoso Bosque Finlandés de Rascafría, 
+                un lugar con el encanto de los cuentos y que recibe este nombre por el gran parecido que presenta con las espesuras escandinavas.
+            </p>
+           </div>
+
+           <div>
+            <p>
+                En esta ruta de senderismo caminamos hacia el histórico Puente Mocha, también conocido como Puente Romano de Valdemaqueda, 
+                Puente de los 5 ojos o Puente del río Cofio, de 40 metros y levantado sobre las bellas aguas del río Cofio.
+            </p>
+           </div>
+
+
+
+           <div>
+            <p>
+                En esta ocasión viajamos con Velázquez para descubrir la Sierra de Guadarrama a través de su obra, 
+                del rumor de las aguas del Valle y el arroyo de Peña Jardinera, de las majestuosas cumbres de la 
+                Maliciosa (también conocida como la Monja) y el Peñotillo reflejadas en las aguas de su embalse de aguas heladas
+            </p>
+           </div>
+
+           <div>
+            <p>
+                En esta ruta de senderismo caminamos hacia la Cascada del Covacho, también conocida como Chorrera del 
+                Covacho, bello salto de agua que producen las aguas del Arroyo de Peña Herrera, además disfrutamos de 
+                los Arroyos del Cuchillar y de Peregrinos, de la majestuosa Sierra de Hoyo con vistas a los Cerros Covacho y Lechuza
+            </p>
+           </div>
+
+           <div>
+            <p>
+                En esta ruta de senderismo caminamos hacia Cabeza Mediana, una cumbre que nos ofreció una de las mejores panorámicas 
+                de la Sierra de Guadarrama. En su cima disfrutamos de un histórico telégrafo óptico datado en 1846 y conocido como 
+                Torre de Monterredondo, la cual es una de las primeras construcciones de este tipo en España.
+            </p>
+           </div>
+
+
+        </div>
+
+
+
+
+
+
+    </body>
+</html>
