@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARRAYS</title>
+</head>
+
+<!--los arrays sirven para almacenar los datos-->
+<body>
+    <!--FORMULARIO-->
+    <form>
+        <label>ELEMENTO A COMPRAR</label><br>
+        <input type="text" id="elemento" name="elemento"><br>
+        <button type="button" onclick="agregarElemento()">AÑADIR</button>
+        
+    </form>
+    <!--FIN FORMULARIO-->
+
+    <!--ELEMENTOS HTML-->
+    <h3>LISTA DE LA COMPRA</h3>
+    <ul id="listado"></ul>
+
+    <!--FIN ELEMENTOS HTML-->
+
+
+
+     <!--JS-->
+    <script>
+        let listaCompra = []; //array de almacenamiento de elementos
+
+        //hacemos una funcion para añadir un elemento a la lista array
+        function agregarElemento () {
+            let nuevoElemento = document.getElementById('elemento').value;//aqui cogemos el valor para usarlo y darle funcionalidad, tambien nos vale con id o name 
+            
+            listaCompra.push (nuevoElemento); //push es para añadir el elemento
+
+            document.getElementById('elemento').value = "";//aqui solo lo añade
+            
+            console.log(listaCompra[0]);
+
+            actualizarListado();
+        };
+        //hasta aqui la funcion añadir elemento.
+
+        //hacemos una funcion para actualizar listado.
+        function actualizarListado(){
+            let lista = document.getElementById('listado');
+
+            //la limpio y cuando la actualizo muestro todos los elementos del array
+            lista.innerHTML = ""; //va a recorrer todo el array de la lista.
+                for (let n = 0; n < listaCompra.length; n++ ) { //esto lo que hace es declarara la variable, mira los elementos que hay en la variable y nos los muestra en lista
+                    let li = document.createElement("li"); //li porque es una lista, creando un elemento en lista, aqui metere todo lo que saque
+                    li.textContent = listaCompra [n]//aqui digo que el elemento li tenga como contenido de texto lo que lea de lista compra, los elementos n
+                    lista.appendChild(li); //aqui añade como elemento hijo de la lista el elemento nuevo
+                }
+        }
+
+    </script>
+
+</body>
+</html>
