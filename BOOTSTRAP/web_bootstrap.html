@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOOTSTRAP WEB</title>
+    
+    <!--AQUI VOY A ENLAZAR BOOTSTRAP PARA PODER UTILIZARLO Y ASI HACER UNA WEB RESPONSIVE CON TODAS SUS VENTAJAS CON CSS-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <!--AQUI ENLAZO BOOTSRAP PARA JAVASCRIPT, A TENER EN CUENTA QUE SI PONGO EL SCRIPT AQUI, EL FICHERO ME CARGA AQUI, ASI YA ESTA DISPONIBLE 
+    PARA TODA LA PAGINA, LOS PUEDO PONER DONDE SEA, PERO ES RECOMENDABLE QUE SE PONGA AL FINAL DEL BODY-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <!--favicon-->
+    <link rel="shortcut icon" href="IMAGENES/FAVICON.jpg" type="">"
+
+    <!--dare funcionalidad a mis componentes-->
+    <style>
+      body{
+        background-color: #6361A2;
+      }
+
+        /*los img que estén dentro de un div, tendran los siguientes estilos*/
+      .carousel-item {
+        height: 600px;
+      }
+
+      img {
+        height:100%;
+      }
+/*CUANDO EL CURSOR PASE POR ENCIMA, SE APLICARAN ESTOS CSS*/
+      a:hover {
+        background-color: #9896FA;
+        padding: 5px;
+        border-radius: 5px;
+        transition: 3s;
+      }
+    
+
+
+    </style>
+</head>
+
+<body>
+    <!--solo voy a utilizar modulos o contenedores para adaptar lo que necesito o quiero conseguir, esto se hace mediante divs y me voy a la 
+    pagina de bootstrap para buscar los componentes que deseo y asi copiar el codigo y despues adaptarlo -->
+    <div class="container">
+        <!--esto es un contenedor, damos funcionalidad dentro del div este-->
+        <div class="alert alert-primary text-center fs-2" role="alert">
+          PELICULAS DE HARRY POTTER
+        </div>
+        <!--hasta aqui el contenedor de la alerta-->
+
+        <!--ahora vamos a colocar un menu de navegacion desplegable-->
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="C:\Users\crist\OneDrive\Documentos\GitHub\DESARROLLO-DE-INTERFACES\BOOTSTRAP\web_bootstrap.html">INICIO</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                <a class="nav-link" href="https://www.max.com/es/es/channel/harry-potter" target="_blank">PELICULAS</a> <!--TARGET BLANK ES PARA QUE SE ABRA EL ENLACE EN UNA NUEVA PESTAÑA-->
+                <a class="nav-link" href="https://es.wikipedia.org/wiki/Harry_Potter_(serie_cinematogr%C3%A1fica)" target="_blank">SINOPSIS</a>
+                <a class="nav-link" href="https://www.fotogramas.es/noticias-cine/g451890/los-47-personajes-clave-de-la-saga-harry-potter/" target="_blank">PROTAGONISTAS</a>
+                <a class="nav-link" href="https://www.youtube.com/playlist?list=PLYXfr3Na3Iuf8Kg__C6Fll5bapkVOXp9b" target="_blank">BSO</a>
+                <a class="nav-link" href="https://tourlondres.com/lugares-donde-se-rodaron-las-peliculas-de-harry-potter/" target="_blank">RODAJE</a>
+                <a class="nav-link" href="https://www.casadellibro.com/libros-harry-potter?srsltid=AfmBOooxHzmp6aUjZQfJS7unRajbmbQ0jPBFcotbpp4nNOVpuoBOhbOV" target="_blank">LIBROS</a>
+                <a class="nav-link" href="https://www.harrypotter.com/es" target="_blank">POTTERMORE</a>
+
+              </div>
+            </div>
+          </div>
+        </nav>
+      <!--hasta aqui el menu del navegador desplegable-->
+
+
+        <!--vamos a hacer un carrusel, todo este codigo es lo copiado de bootstrap, modificado hasta donde pone fin carrusel completo-->
+        <div id="carouselExample" class="carousel slide">
+            <div class="carousel-inner">
+              <!--para que todas las imagenes tengan el mismo tamaño y caracteristicas, le voy a poner una etiqueta style-->
+              <!--si yo tengo un img y un div, me subo arriba a la parte del head y mediante las etiquetas del css en style, voy dando apariencia-->
+              <div class="carousel-item active">
+                <img src="IMAGENES/INICIALES.avif" class="d-block w-100" alt=""> <!--esto nos indica que la imagen ocupa el ancho y el alto que esta establecido en esta linea-->
+              </div>
+
+              <div class="carousel-item">
+                <img src="IMAGENES/FILOSOFAL.webp" class="d-block w-100" alt="">
+              </div>
+              <div class="carousel-item">
+                <img src="IMAGENES/CAMARA.avif" class="d-block w-100" alt="">
+              </div>
+
+              <div class="carousel-item">
+                <img src="IMAGENES/PRISIONERO.jpg" class="d-block w-100" alt="">
+              </div>
+
+              <div class="carousel-item">
+                <img src="IMAGENES/CALIZ.webp" class="d-block w-100" alt="">
+              </div>
+
+              <div class="carousel-item">
+                <img src="IMAGENES/FENIX.jpg" class="d-block w-100" alt="">
+              </div>
+
+              <div class="carousel-item">
+                <img src="IMAGENES/PRINCIPE.jpg" class="d-block w-100" alt="">
+              </div>
+
+              <div class="carousel-item">
+                <img src="IMAGENES/RELIQUIAS1.webp" class="d-block w-100" alt="">
+              </div>
+
+              <div class="carousel-item">
+                <img src="IMAGENES/RELIQUIAS2.jpg" class="d-block w-100" alt="">
+              </div>
+            </div>
+
+            <!--hasta aqui es el carrusel como tal donde le hemos dado funcionalidad-->
+            <!--esto de aqui abajo, como el propio nombre indica son los botones-->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        <!--fin carrusel completo-->
+
+      <!--hacemos un formulario responsive y con bootstrap-->
+        <form>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">Nunca compartiremos su correo electrónico con nadie más.</div>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="exampleInputPassword1">
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Mostrar</label>
+          </div>
+          <button type="submit" class="btn btn-primary">Enviar</button>
+          <button type="reset" class="btn btn-info">Borrar</button>
+        </form>
+      <!--fin del formulario-->
+    
+
+    </div> <!--fin del contenedor principal donde va todo metido-->
+
+
+</body>
+</html>
