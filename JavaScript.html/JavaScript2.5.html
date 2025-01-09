@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript II</title>
+
+    <style>
+        table, tr, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+          
+        };
+
+    </style>
+
+</head>
+<!--siempre tenemos que tener claro que JS nos sirve para, dentro del cliente/navegador, sacar cosas por la consola o por una etiqueta, etc.-->
+<!--la consola nos muestra todos los metodos que el array nos acepta (consola del navegador), dandole a prototype una vez compilado-->
+<!--continuacion de JS2-->
+
+<!--vamos a hacer un contador con funciones recursivas, es decir una funcion que llama a otra funcion dentro de ella-->
+
+
+<body>
+<!--HTML-->
+    <table id= "salida" >LISTADO DE TRABAJADORES</table><br>
+    <p id= "sal2"></p>
+    <br>
+
+    <p id="contador"></p>
+    <button onclick="increcontador">INCREMENTAR</button>
+
+<!--Javascript-->
+    <script>
+        //vamos a crear el objeto para meterlo despues en el array en un formato json
+        let persona = {
+            nombre: "Pedro Lopez Jimenez",
+            tel: "12345678",
+            cp:"04317",
+            edad: 30
+        };
+
+        //estructura json: clave-valor, como bbdd
+        let empleados = [
+            {nombre:" Luis",puesto: "administrativo", salario: "25000"}, //un empleado
+            {nombre:" Ana",puesto: "gerente", salario: "35000"}, //otro empleado
+            {nombre:" Lucia",puesto: "vendedora", salario: "20000"} //otro empleado
+        ];
+
+        //para que me saque los datos de uno solo
+        //document.getElementById('salida').innerHTML = empleados[0].nombre + " " + empleados  [0].puesto + empleados[0].salario; //esto es los datos de uno
+
+
+        //vamos a hacer un CONTADOR: 
+        function añadirContador(){
+            let cont = 0; //declaramos la variable
+            //la funcion nos va a retornar otra funcion:
+            return function() { 
+                cont ++; //nos suma 1 valor al inicio, devuelve un incremento de la variable, y se queda ahi siempre, cuando vuelvo esta incrementada y vuelve a incrementarse cada vez 
+                document.getElementById("contador").innerHTML = " Contador " + cont;
+            }
+        };
+
+        //aqui le pongo una variable para 
+        let increcontador = añadirContador(); //aqui lo que estoy haciendo es que el objeto increcontador, es la funcion añadirContador y esta funcion la puedo llamar en el boton de incrementar
+
+
+    </script>
+
+</body>
+</html>

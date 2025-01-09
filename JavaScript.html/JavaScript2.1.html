@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript II</title>
+
+
+
+</head>
+<!--siempre tenemos que tener claro que JS nos sirve para, dentro del cliente/navegador, sacar cosas por la consola o por una etiqueta, etc.-->
+<!--la consola nos muestra todos los metodos que el array nos acepta (consola del navegador), dandole a prototype una vez compilado-->
+
+<body>
+<!--HTML-->
+    <p id= "salida"></p>
+    <p id= "sal2"></p>
+
+<!--Javascript-->
+    <script>
+        //vamos a crear el objeto para meterlo despues en el array eun un formato json
+        let persona = {
+            nombre: "Pedro Lopez Jimenez",
+            tel: "12345678",
+            cp:"04317",
+            edad: 30
+        };
+
+
+        document.getElementById('salida').innerHTML = persona['nombre']; //sacar el objeto en el navegador, en este caso, el nombre
+        document.getElementById('sal2').innerHTML = persona.nombre.toUpperCase(); //nos sale el nombre en mayusculas
+        document.getElementById('sal2').innerHTML = persona.nombre.toUpperCase().split(); //nos sale el nombre pero separado cada letra por comas 
+        document.getElementById('sal2').innerHTML = persona.nombre.toUpperCase().split(" "); //nos salen los nombres completos peeeero, el primero y el segundo separados por comas 
+        
+
+        function arrays () {
+            let frutas = ["Peras","Limones","Plátanos"]; //aqui creo las frutas
+
+            document.getElementById('salida').innerHTML = "Lista: " + frutas.join(",") ;//esto es el vinculo con HTML, join es unir elementos del array, en este caso los une separandolos por (,)
+        
+            document.getElementById('sal2').innerHTML = "Elemento del array" + frutas.join [1] + frutas [0]; // frutas.join[1] esto es para sacar el segundo elemento del array ya que el primero es 0 y luego saca todos los elementos con frutas[0]
+        
+            frutas.push("Melón"); //aqui añado una nueva
+        };
+    </script>
+
+    
+</body>
+</html>

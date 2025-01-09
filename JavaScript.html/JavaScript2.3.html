@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript II</title>
+
+    <style>
+        tr, td {
+            border: 1px solid black;
+        }
+    </style>
+
+</head>
+<!--siempre tenemos que tener claro que JS nos sirve para, dentro del cliente/navegador, sacar cosas por la consola o por una etiqueta, etc.-->
+<!--la consola nos muestra todos los metodos que el array nos acepta (consola del navegador), dandole a prototype una vez compilado-->
+<!--continuacion de JS2-->
+
+
+<body>
+<!--HTML-->
+    <p id= "salida" >LISTADO DE TRABAJADORES</p><br>
+    <p id= "sal2"></p>
+    <br>
+    <button onclick="mostrarempleados()">EJECUTAR</button>
+
+<!--Javascript-->
+    <script>
+        //vamos a crear el objeto para meterlo despues en el array eun un formato json
+        let persona = {
+            nombre: "Pedro Lopez Jimenez",
+            tel: "12345678",
+            cp:"04317",
+            edad: 30
+        };
+
+        //estructura json: clave-valor, como bbdd
+        let empleados = [
+            {nombre:" Luis",puesto: "administrativo", salario: "25000"}, //un empleado
+            {nombre:" Ana",puesto: "gerente", salario: "35000"}, //otro empleado
+            {nombre:" Lucia",puesto: "vendedora", salario: "20000"} //otro empleado
+        ];
+
+        //para que me saque los datos de uno solo
+        //document.getElementById('salida').innerHTML = empleados[0].nombre + " " + empleados  [0].puesto + empleados[0].salario; //esto es los datos de uno
+
+        //para que me salgan todos en lista 
+        //vamos a hacer un bucle que lea el indice de todos y me saque el nombre, puesto y el salario y me saque los 3:
+        //la clave para que te salga en lista es el += (lo que hace es ir añadiendo la salida y el nuevo), despues del innerHTML y del <br>
+        function mostrarempleados(){
+            for(let n = 0; n < empleados.length; n ++) {
+                
+                document.getElementById('salida').innerHTML += "<br>" + empleados [n].nombre + " " + empleados [n].puesto + " " + empleados[n].salario + "<br> ";
+
+            };
+        };
+
+    </script>
+
+</body>
+</html>

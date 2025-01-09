@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript II</title>
+
+</head>
+<!--siempre tenemos que tener claro que JS nos sirve para, dentro del cliente/navegador, sacar cosas por la consola o por una etiqueta, etc.-->
+<!--la consola nos muestra todos los metodos que el array nos acepta (consola del navegador), dandole a prototype una vez compilado-->
+<!--continuacion de JS2-->
+
+
+<body>
+<!--HTML-->
+    <p id= "salida"></p>
+    <p id= "sal2"></p>
+
+<!--Javascript-->
+    <script>
+        //vamos a crear el objeto para meterlo despues en el array eun un formato json
+        let persona = {
+            nombre: "Pedro Lopez Jimenez",
+            tel: "12345678",
+            cp:"04317",
+            edad: 30
+        };
+
+        //estructura json: clave-valor, como bbdd
+        let empleados = [
+            {nombre:" Luis",puesto: "administrativo", salario: "25000"}, //un empleado
+            {nombre:" Ana",puesto: "gerente", salario: "35000"}, //otro empleado
+            {nombre:" Lucia",puesto: "vendedora", salario: "20000"} //otro empleado
+        ];
+
+        document.getElementById("salida").innerHTML = empleados[0]['nombre'].toUpperCase(); //vamos a sacar el primer empleado por nombre en mayusculas
+        document.getElementById("sal2").innerHTML = empleados[0].salario + empleados [1].salario + empleados [2].salario;
+    
+
+    </script>
+
+</body>
+</html>
