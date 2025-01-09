@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORMULARIO</title>
+</head>
+
+<body>
+    <!--INICIO HTML-->
+    <h1>DATOS PERSONALES</h1>
+
+    <!--formulario-->
+    <form id="datosper">
+        <label>Nombre:</label><br>
+        <input type="text" id="nombre" name="nombre" value="Pedro"><br><br>
+
+        <label>Ciudad:</label><br>
+        <input type="text" id="ciudad" name="ciudad" value="Madrid"><br><br>
+
+        <label>Edad:</label><br>
+        <input type="text" id="edad" name="edad" value="23"><br><br>
+
+        <button type="button" onclick="añadirPersona()">AGREGAR</button>
+
+    </form>
+    <!--fin formulario-->
+
+    <h2>PERSONAS AGREGADAS</h2>
+    <div id="datos"></div>
+    <!--fin HTML-->
+
+    <!--INICIO JS-->
+    <script>
+        //generamos un array vacio para meter los datos:
+        let datosPersonas = [];
+
+        //vamos a hacer la funcion de añadir persona:
+        function añadirPersona(){
+            //recoger datos del formulario
+            const nombre = document.getElementById('nombre').value; //cojo el valor del input con value.
+            const ciudad = document.getElementById('ciudad').value;
+            const edad = document.getElementById('edad').value;
+
+            //creo el objeto de datos ya que ya tengo los valores (arriba) de las variables, de tipo json
+            const nuevaPersona = {
+                nombre: nombre, //clave:objeto
+                ciudad: ciudad, 
+                edad: edad,
+            };
+
+            //insertar el objeto persona en el array personas: 
+            datosPersonas.push(nuevaPersona);
+
+            //limpiar datos del formulario:
+            document.getElementById('datosper').reset();
+
+            mostrarPersonas();
+
+            console.log(datosPersonas);
+            
+        };
+
+        //hacer la funcionalidad para mostrar el objeto en si mismo:
+        function mostrarPersonas(){
+            //lo vamos a hacer cargando un objeto ya creado:
+            const contenedor = document.getElementById('datos'); //el div datos, ya esta en el contenedor
+            contenedor.innerHTML = ""; //limpiar lo que tenga anteriormente en ekl formulario
+
+            //aqui asignamos el indice y los valores que van a coger para leer los arrays y sin utilizar el bucle, leen el indice y los datos:
+            //el bucle for es el numero determinado de veces que se va a leer, es un index y un dato. 
+            //estas llaves despues del foreach son el harrow que son las que hacen la funcionalidad del bucle
+            //el contenedor que tenemos, le voy a meter el valor de cada vuelta
+            //foreach va leyendo el resultado multiple y lee el indice y el valor de cada vuelta o registro, el harrow ((dato,index )=>{`${}, lo inyecta con esas comillas especiales `` al contenedor, esto es una cadena de interpolacion
+           
+            datosPersonas.forEach((dato,index )=>{
+                const divmuestra = document.createElement('div'); //cojo un div y lo creo para que sea el div muestra y usarlo en el contenedor
+
+                //esta comilla permite interpolar, se utiliza para que sin tener que concatenar y poner comillas, poder sacar datos dentro de etiquetas HTML, (pej)
+                divmuestra.innerHTML = `
+                    <h2>Código: ${index + 1}</h2> 
+                    <p>Nombre: ${dato.nombre}</p>
+                    <p>Ciudad: ${dato.ciudad}</p>
+                    <p>Edad: ${dato.edad}</p>
+                `; 
+                
+                datos.appendChild(divmuestra); //esto lo que hace es dentro de un contenedor html le mete un hijo que es el contenedor con los datos, todo esto va a entar como hijo del primer div/contenedor
+                //fin de la interpolacion (mezclar html con js)
+
+            });
+
+        };
+    
+
+    </script>
+    <!--FIN JS-->
+    
+</body>
+</html>
