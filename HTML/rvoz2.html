@@ -18,6 +18,7 @@ el objeto dentro de una variable y luego modificarlo a placer-->
         <button id="iniciar">INICIAR GRABACIÓN</button>
         <button id="parar">PARAR GRABACIÓN</button>
         <div id="mensaje"></div>
+        <div id="salida" style="width: 300px; height:300px; margin: auto;"></div>
 
     <!--JavaScript-->
         <script>
@@ -55,6 +56,27 @@ el objeto dentro de una variable y luego modificarlo a placer-->
                         };
                     };
                     mensajediv.textContent = mensajefinal; //este es el mensaje final que se ha guardado
+
+
+                    //creo una alerta:
+                    if (mensajefinal == "alerta"){
+                        alert("Este mensaje es una alerta lanzada por voz");
+                    };
+
+                    //aqui vamos a ponerle una alerta que al decir muestra nos salga un cuadro con esa palabra
+                    if (mensajefinal == "muestra"){
+                        const contenedor = document.getElementById('salida');
+                        const cuadrosalida = document.createElement('h1');
+                        cuadrosalida.innerHTML = "ey";
+                        cuadrosalida.style.backgroundColor = "red";
+                        cuadrosalida.style.width = "450px";
+                        cuadrosalida.style.height = "450px";
+                        cuadrosalida.style.margin = "auto";
+                        cuadrosalida.style.alignContent = "center";
+                        cuadrosalida.style.textAlign = "center";
+                        cuadrosalida.style.color = "white";
+                        contenedor.appendChild(cuadrosalida);
+                    };
 
                 };
                 /*aqui lo que hace es que cuando acaba el reconocimiento, si tiene el onerror, es el resultado y la posicion inicial (0 del resultado),
