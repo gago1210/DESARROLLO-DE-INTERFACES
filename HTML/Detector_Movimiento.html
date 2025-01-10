@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DETECTOR DE MOVIMIENTO</title>
+</head>
+<!--Es parte de la interfaz natural. 
+Vamos a hacer primero los elementos de nuestro HTML, ponemos una etqueta de video tipica de html para reproduccion de video que recoge la señal de
+la camara.
+Creamos un contenedor canvas para crear animacion, es como un lienzo que podemos manejar con cualquier parametro de JS.
+Generamos un div para mostrar el estado cuando detecte movimiento-->
+
+<body>
+    <!--HTML-->
+    <h1>DETECCIÓN DE MOVIMIENTO</h1>
+    <video id="video" width="700" height="500" autoplay></video>
+    <canvas id="canvas" width="700" height="500"></canvas>
+    <div id="estado"></div>
+
+    <!--JS-->
+    <script>
+        //creamos los objetos que vayamos a manejar:
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas'); //donde vamos a poner las copias de lo que hayamos creado
+        /*esto es para manejar canvas, se pone siempre, significa contexto y es donde se manejan las imagenes, lo pongo en 2d, es la estructura 
+        del mapa de bits para el concepto de imagen, para que se cree*/
+        const ctx = canvas.getContext('2d');
+        //creamos el detector de la imagen:
+        const deteccion = document.getElementById ('estado');
+
+        //creamos una variable para ir guardando los frames:
+        let anteriorFrame = null; //null para que este vacio.
+
+        /*vamos a crear una funcion en modo promesa que se trata de un bucle en el que si se cumple, funciona y sino no, hay muchos tipos de 
+        promesas que lo que hace es una conexion a una velocidad muy rapida*/
+
+        /*vamos a utilizar el objeto del DOM navigator que es la tecnologia que tiene el navegador en su interior. utilizamos el concepto
+        navigator.mediaDevices.getUserMedia....(para coger la conexion con la camara),la promesa es la parte de .them, es el gestor de promesa con 
+        una funcion de emision (recepcion del video). la promesa lo que va a hacer es leer la funcion del stream y recoger el video (la imagen
+        que hemos utilizado,(video.srcObject.....).
+
+        estamos usando un elemento del navegador */
+        //conectar con la camara del equipo:
+        navigator.mediaDevices.getUserMedia({video:true})
+            .then(function(stream){
+                video.srcObject = stream;
+            })
+            .catch(function(error){
+                console.error("Error: ", error);
+            });
+
+        /*vamos a hacer una funcion que (ctx) dibuje como un mapa de bits pintandolos, tipico de canvas, drawImage, tiene varios parametros permitidos:
+        drawImage, cogerá el objeto que lleva la imagen de la camara y lo vamos a pintar haciendo mapa de bits (video, 0, 0), asi pues la imagen 
+        se ira ajustando con los datos de canvas que le esté dando. Le pongo estas coordenadas y asi le doy el tamaño definido del canvas.
+
+        Despues hago una variable (const frameActual) para que los fotogramas se guarden, lo que hace este metodo es coger los datos de los pixeles, 
+        se guarda la informacion (posicion 0, 0, es decir su ancho y su alto del canvas)*/
+        //deteccion del movimiento:
+        function detectarMovimiento(){
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+            const frameActual = ctx.getImageData(0,0, canvas.width, canvas.height);
+
+            /* hacemos un bucle para que lea los datos del frame actual y la imagen se vaya pintando*/
+            if(anteriorFrame){
+                let diferencia = 0;
+                for (let i = 0; i < frameActual.data.length; i+=4){//esto es para que vaya avanzando la imagen
+                    diferencia += Math.abs(frameActual.data[i] - anteriorFrame.data [i]); //con esto es para ver el numero de variaciones, saber si los pixeles son diferentes de una imagen y otra
+                    diferencia += Math.abs(frameActual.data[i + 1] - anteriorFrame.data [i + 1]); //ver las diferencias adelantando el pixel
+                    diferencia += Math.abs(frameActual.data[i + 2] - anteriorFrame.data [i + 2]); 
+                }
+
+                //aqui añado otro if para la diferencia de los puntos cambiados (10000000)cuanto menos 0 mas sensibilidad
+                if (diferencia > 10000000){
+                    deteccion.innerHTML = "<h1>MOVIMIENTO DETECTADO</h1>";
+                }else {
+                    deteccion.innerHTML = "<h1>MOVIMIENTO NO DETECTADO</h1>";
+                }
+            }
+
+            /*vamos a generar una asignacion de anterior frame, lo vamos a cargar con actual frame. y vamos a hacer una peticion para 
+            que la funcion este actuando constantemente, una funcion anidada, pero sin ningun bucle, vamos  aestar llamando a la funcion que hay 
+            dentro de esa funcion*/
+            anteriorFrame = frameActual;
+            requestAnimationFrame(detectarMovimiento);
+        }
+        //Vamos a hacer para que se escuche el video:
+        video.addEventListener('play',function(){
+            detectarMovimiento()
+        });
+
+    </script>
+    
+</body>
+</html>
