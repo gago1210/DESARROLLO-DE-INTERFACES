@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RECONOCIMIENTO DE VOZ</title>
+
+</head>
+<!--no hay que enlazar nada ya que es un comando de js que esta en el nucleo del js nativo y nos permite hacer objetos de reconocimiento de voz.
+vamos a poner dos botones y un objeto que nos muestre lo que grabamos 
+
+lo que hacemos en la parte del script es generar los elementos del html, para poder manipularlos sin tener que hacer onclick, estoy generando 
+el objeto dentro de una variable y luego modificarlo a placer-->
+
+<body>
+    <!--html-->
+        <h1>RECONOCIMIENTO DE VOZ JAVASCRIPT</h1>
+        <button id="iniciar">INICIAR GRABACIÓN</button>
+        <button id="parar">PARAR GRABACIÓN</button>
+        <div id="mensaje"></div>
+
+    <!--JavaScript-->
+        <script>
+            const iniciar = document.getElementById('iniciar');
+            const parar = document.getElementById('parar');
+            const mensajediv = document.getElementById('mensaje'); //nos va a salir lo que va grabando
+
+    /*verificar navegador compatible con la API: si la funcion webkit del navegador es compatible in window(navegador), se mete en el bucle
+    sino se mete en else y nos da el mensaje de no ser compatible. En const recognition = new webkitSpeechRecognition lo que estoy haciendo
+    es una instancia del objeto const recognition, esta toda la funcionalidad del objeto para poder cargarlo y aplicarle diferentes cosas.
+    Vamos a seguir en el for y lo que vamos a hacer es el reconocimiento continuo y el reconocimiento de resultados.*/
+            if('webkitSpeechRecognition' in window) {
+                const recognition = new webkitSpeechRecognition();
+
+                recognition.continuous = true; //reconocimiento continuo
+                recognition.interimResults = true; //mostrar resultados provisionales o intermedios
+
+                //vamos a poner el aviso de grabando:
+                recognition.onstart = function() {
+                    mensajediv.textContent = "Escuchando..."
+                };
+
+                 //otro evento que cuando funciona y ha grabado la voz, este parametro (event) es lo que se ha grabado
+                recognition.onresult = function(event) {
+                    let mensajefinal = " "; //creamos la variable vacia porque aun no se ha guardado
+
+                    /*estamos creando un array de palabras que se estan grabando y guardando, con esto va creando y añadiendo palabras para generar
+                    frases y luego guardarlo en modo mensaje (++i es para incremenntar, juntar todo)*/
+                    for(let i = event.resultIndex; i < event.results.length; ++i ){
+                        if(event.results [i].isFinal){
+                            mensajefinal += event.results[i][0].transcript; //esto es el final y lo guarda
+                        }else {
+                            mensajefinal += event.results [i][0].transcript + ' '; /*esto es si no es el final, sigue generando el mensaje, separando 
+                                                                                        las palabras*/
+                        };
+                    };
+                    mensajediv.textContent = mensajefinal; //este es el mensaje final que se ha guardado
+
+                };
+                /*aqui lo que hace es que cuando acaba el reconocimiento, si tiene el onerror, es el resultado y la posicion inicial (0 del resultado),
+                esta recorriendo el array de palabras que tiene- para el cada palabra es el resultado del array y pone un espacio, no añade mas posiciones
+                el result es solo uno a la vez, no es un array multiple, tiene una posicion unica, va añadiendo con += cada palabra del array 
+                
+                aqui vamos a recoger cosas: que pasa si hay un error, que pasa cuando le doy al boton iniciar y que pasa cuando le doy al boton parar.
+
+                event es el elemento de grabacion, donde se queda todo guardado.*/
+                recognition.onerror = function(event){
+                    mensajediv.textContent = "Error: " + event.error;
+                }
+
+                /*vamos a dar funcionalidad de arranque y de parada de nuestros botones de antes a traves de los id puestos en el apartado de html, 
+                iniciar y parar*/
+                iniciar.onclick = function() {
+                    recognition.start(); //cuando arranque se pondra a escuchar
+                };
+
+                parar.onclick = function() {
+                    recognition.stop(); //cuando arranque parará
+                    mensajediv.textContent = "Reconocimiento finalizado";
+                };
+            
+            }else {
+                mensajediv.textContent = "El navegador no es compatible";
+
+            };
+
+        </script>
+</body>
+</html>
