@@ -27,34 +27,55 @@
 
      <!--JS-->
     <script>
-        let listaCompra = []; //array de almacenamiento de elementos
+        let listaCompra = []; //array de almacenamiento de elementos/items
 
         //hacemos una funcion para añadir un elemento a la lista array
         function agregarElemento () {
+            //obtener el valor del input
             let nuevoElemento = document.getElementById('elemento').value;//aqui cogemos el valor para usarlo y darle funcionalidad, tambien nos vale con id o name 
             
-            listaCompra.push (nuevoElemento); //push es para añadir el elemento
+            listaCompra.push (nuevoElemento); //push es para añadir el elemento. aqui agregamos el nuevo elemendo al array
 
-            document.getElementById('elemento').value = "";//aqui solo lo añade
+            document.getElementById('elemento').value = "";//limpiar el input
             
             console.log(listaCompra[0]);
 
-            actualizarListado();
+            actualizarListado(); //actualizar la lista en la pagina
         };
         //hasta aqui la funcion añadir elemento.
 
         //hacemos una funcion para actualizar listado.
         function actualizarListado(){
+            //obtener el elemento ul
             let lista = document.getElementById('listado');
 
             //la limpio y cuando la actualizo muestro todos los elementos del array
-            lista.innerHTML = ""; //va a recorrer todo el array de la lista.
+            lista.innerHTML = ""; //limpiar el array y agregar cada elemento a la lista
                 for (let n = 0; n < listaCompra.length; n++ ) { //esto lo que hace es declarara la variable, mira los elementos que hay en la variable y nos los muestra en lista
                     let li = document.createElement("li"); //li porque es una lista, creando un elemento en lista, aqui metere todo lo que saque
                     li.textContent = listaCompra [n]//aqui digo que el elemento li tenga como contenido de texto lo que lea de lista compra, los elementos n
                     lista.appendChild(li); //aqui añade como elemento hijo de la lista el elemento nuevo
                 }
         }
+        //array para almacenar los productos
+        let productos = []
+
+        //json DE PRODUCTOS
+        const productosJSON = `
+        [
+            {"nombre": "Manzanas" , "precio": 1.20},
+            {"nombre": "Platanos" , "precio": 0.80},
+            {"nombre": "Naranjas" , "precio": 1.00},
+        ]`;
+
+        //convertir el json a un array de objetos js
+        const nuevosProductos = JSON.parse(productosJSON);
+
+        //agregar los nuevos productos al array existente
+        productos = productos.concat(nuevosProductos);
+
+        //mostrar el array de productos en la consola
+        console.log(productos[1]["nombre"] + " " + productos[1] ["precio"]);
 
     </script>
 
