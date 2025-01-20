@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJERCICIO 1</title>
+    <style>
+        table{
+            margin: auto;
+        }
+        
+        td,tr{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        td{
+            width: 200px;
+        }
+
+        th{
+            background-color: darkcyan;
+        }
+
+    </style>
+</head>
+<body>
+    <table id="tabla">
+        <th>
+            <td>NOMBRE</td>
+            <td>EDAD</td>
+            <td>CIUDAD</td>
+        </th>
+    </table>
+
+    <script>
+        const personas = [
+            {nombre: "Ana", edad: 32, ciudad: "Madrid"},
+            {nombre: "Juan", edad: 25, ciudad: "Barcelona"},
+            {nombre: "María", edad: 40, ciudad: "Valencia"}
+        ];
+
+        personas.forEach(persona => {
+            document.getElementById('tabla').innerHTML += "<tr><td>" + persona.nombre + "</td><td>" + persona.edad + "</td><td>" + persona.ciudad + "</td><tr>";
+            document.getElementById('tabla').innerHTML += `<tr><td>${persona.nombre}</td><td>${persona.edad}<tr><td>${persona.ciudad}</td><tr>`;
+        });
+
+    </script>
+    
+</body>
+</html>
