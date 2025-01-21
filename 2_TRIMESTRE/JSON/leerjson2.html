@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LECTURA FETCH</title>
+
+    <style>
+        #salida{
+            width: 100vw;
+            display: flex;
+            flex-direction: row wrap;
+            justify-items: space-around;
+        }
+    </style>
+</head>
+<body>
+    <div id="salida"></div>
+
+    <script>
+/*fetch es una promesa que lo que hace es una funcion que hace peticiones remotas o en local. Yo pongo el nombre del fichero (datos.json) y lo que
+hace es ir al servidor, buscar este nombre de fichero, hacer una peticion asincrona, coger la respuesta y guardarla en otro fichero json. 
+lo que coge del fichero, es una cadena de texto, js como los json son (javascript object notation), notacion de objetos javascript.
+esta repuesta que es el fichero que ha traido del servidor el fetch, (la funcion fetch es como peticion) y la convierte a json y la guarda en 
+datos*/
+        async function lectura() {
+            const respuesta = await fetch ('datos.json');
+            const datos = await respuesta.json();
+            console.log(respuesta);
+            console.log(datos);
+
+            document.getElementById('salida').innerHTML += vecinos[0]['Nombre'];
+        };
+
+        /*
+        //hacemos una funcion asincrona que hacen promesas (funcion que hace una llamada y esta espera a que el servidor la reciba y responde en 
+        // consecuencia, espera la recepcion de la respuesta)
+        async function leerJson() {
+            //generamos una constante que va a ser la que nos va a recoger la respuesta del servidor con una funcion de espera:
+            const respuesta = await fetch('datos.json');
+            //esta respuesta que hemos recibido con la funcion awaitfecth, con la promesa, vamos a generar los datos convertidos a json(parseamos)
+            // la respuesta, la cual ha llegado como fichero y la convertimos a json para cargarla a datos:
+            const datos = await respuesta.json();
+            console.log(datos)
+            //esta respuesta la vamos a devolver de la funcion:
+            return datos;
+        };
+        leerJson(datos);
+        */
+        
+
+    </script>
+    
+</body>
+</html>

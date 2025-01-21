@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LECTURA FETCH</title>
+
+    <style>
+        #salida{
+            width: 100vw;
+            display: flex;
+            flex-direction: row wrap;
+            align-items: space-around;
+        }
+
+        #salida div {
+            width: 400px;
+            height: 300px;
+            float: left;
+            margin: 10px;
+            padding:10px;
+            background-color: rgb(238, 220, 186);
+        }
+
+        img{
+            width:100%;
+            height: 65%;
+        }
+
+        h3{
+            text-align: center;
+            color: orange;
+        }
+
+        p{
+            text-align:justify;
+        }
+    </style>
+</head>
+<body>
+    <div id="salida"></div>
+    <br><br>
+    <p id="starwars"></p>
+
+    <script>
+/*fetch es una promesa que lo que hace es una funcion que hace peticiones remotas o en local. Yo pongo el nombre del fichero (datos.json) y lo que
+hace es ir al servidor, buscar este nombre de fichero, hacer una peticion asincrona, coger la respuesta y guardarla en otro fichero json. 
+lo que coge del fichero, es una cadena de texto, js como los json son (javascript object notation), notacion de objetos javascript.
+esta repuesta que es el fichero que ha traido del servidor el fetch, (la funcion fetch es como peticion) y la convierte a json y la guarda en 
+datos*/
+        async function lectura() {
+            const respuesta = await fetch ('datos.json');
+            const datos = await respuesta.json();
+
+            console.log(respuesta);
+            console.log(datos);
+
+//for tiene la variable implicita
+            for(n = 0; n < datos.datosweb.length; n++){
+                /*la comilla simple en img va a coger la url de la imagen que seleccione. Como estoy inyectando el div en 'salida', lo que hago es
+                coger los div que esten en salida y les doy stilo en el style */
+            document.getElementById('salida').innerHTML += "<div>" + 
+                                                            "<img src=' " + datos.datosweb[n]['IMAGEN'] + " ' >" + 
+                                                            "<h3>" + datos.datosweb[n]['Titulo'] + "</h3>" +
+                                                            "<p>" + datos.datosweb[n]['ENTRADA'] + "</p>"
+                                                            + "</div>";
+            };
+
+            
+        };
+
+        lectura();
+
+        //vamos a leer una API
+        async function leerAPI(){
+            let API = 'https://swapi.py4e.com/api/people';
+            const respuesta = await fetch(API); //me salen todos los personajes que esten dentro del indice
+            const personajes = await respuesta.json();
+            console.log(personajes);
+
+            for (n = 0; n < personajes.results.length; n++) {
+                document.getElementById('starwars').innerHTML += personajes['name'] + "<br>";
+            };
+            
+        }
+        leerAPI(); //para visualizar en el navegador
+        
+
+    </script>
+    
+</body>
+</html>

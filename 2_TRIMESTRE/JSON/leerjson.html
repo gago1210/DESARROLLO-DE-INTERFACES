@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LECTURA FETCH</title>
+</head>
+<body>
+
+    <script>
+        //hacemos una funcion asincrona que hacen promesas (funcion que hace una llamada y esta espera a que el servidor la reciba y responde en 
+        // consecuencia, espera la recepcion de la respuesta)
+        async function leerJson() {
+            //generamos una constante que va a ser la que nos va a recoger la respuesta del servidor con una funcion de espera:
+            const respuesta = await fetch('datos.json');
+            //esta respuesta que hemos recibido con la funcion awaitfecth, con la promesa, vamos a generar los datos convertidos a json(parseamos)
+            // la respuesta, la cual ha llegado como fichero y la convertimos a json para cargarla a datos:
+            const datos = await respuesta.json();
+            console.log(datos)
+            //esta respuesta la vamos a devolver de la funcion:
+            return datos;
+        };
+        leerJson(datos);
+
+        
+
+    </script>
+    
+</body>
+</html>

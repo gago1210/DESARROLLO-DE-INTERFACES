@@ -1,0 +1,21 @@
+{"vecinos": [
+    {"Nombre": "Pepe", "Edad":23, "Mascotas":["Pipin", "Lucas"]},
+    {"Nombre": "Ana", "Edad":20, "Mascotas":["Crispin", "Fifi"]},
+    {"Nombre": "Paco", "Edad":50, "Mascotas":["Sombra", "Bruma"]}
+],
+"datosweb":[
+    {"Titulo": "MESAS GIRATORIAS", "ENTRADA":"ABCDE", "IMAGEN":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUD-URd1BwKPS2Zj3BLPF33d0ymK7DO9IO2g&s"},
+    {"Titulo": "SILLAS RELAX", "ENTRADA":"EFGHI", "IMAGEN":"https://www.lowcostmuebles.es/uploaded_images/96431541181.png"},
+    {"Titulo": "MESA GAMER COMPUTER", "ENTRADA":"IJKLMN", "IMAGEN":"https://decozzu.com/cdn/shop/files/ELW9613-ESCRITORIOGAMERKERIAWENGUE_CANTOAZULFBFRONTALDECO.png?v=1722917692&width=1946"},
+    {"Titulo": "CAMA FLUKER", "ENTRADA":"NÑOPQRS", "IMAGEN":"https://muebleslufe.com//modules/ambientes/assets/imgs/CAMAS%20NIDO%202.jpg"}
+],
+"empleados":[
+    {"Nombre": "Pepe", "Edad":23, "Mascotas":["Pipin", "Lucas"]},
+    {"Nombre": "Ana", "Edad":20, "Mascotas":["Crispin", "Fifi"]},
+    {"Nombre": "Paco", "Edad":50, "Mascotas":["Sombra", "Bruma"]}
+],
+"clientes":[
+    {"Nombre": "Anastasio", "Edad":23, "Mascotas":["Pipin", "Lucas"]},
+    {"Nombre": "Ana", "Edad":20, "Mascotas":["Crispin", "Fifi"]},
+    {"Nombre": "Paco", "Edad":50, "Mascotas":["Sombra", "Bruma"]}
+]}
