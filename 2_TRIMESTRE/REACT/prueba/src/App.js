@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Listado from "./componentes/Listado";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button, Container } from "react-bootstrap";
 
-function App() {
+function App(){
+  const elementos = [
+    {id: 1, titulo: 'Invierno'},
+    {id: 2, titulo: 'Primavera'},
+    {id: 3, titulo: 'Verano'},
+    {id: 4, titulo: 'Otoño'},
+  ]
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Container>
+      <div className='App'>
+        <h1>LISTA ESTACIONES DEL AÑO</h1>
+        <Listado elementos = {elementos} />
+        <strong><Listado elementos={elementos}/></strong>
+      </div>
+      <Button variant='primary'>ENVIAR</Button>
+    </Container>
+  )
 }
-
 export default App;
